@@ -1,12 +1,20 @@
+import { smile, moop } from './anime.js';
+import * as faceapi from 'face-api.js';
+import regeneratorRuntime from 'regenerator-runtime';
+
 const video = document.getElementById('video');
 console.log(faceapi.nets);
 
 const setup = async () => {
-  await faceapi.nets.tinyFaceDetector.loadFromUri('/public/models');
-  await faceapi.nets.faceLandmark68Net.loadFromUri('/public/models');
-  await faceapi.nets.faceRecognitionNet.loadFromUri('/public/models');
-  await faceapi.nets.faceExpressionNet.loadFromUri('/public/models');
-  startVideo();
+  try {
+    await faceapi.nets.tinyFaceDetector.loadFromUri('/models');
+    await faceapi.nets.faceLandmark68Net.loadFromUri('/models');
+    await faceapi.nets.faceRecognitionNet.loadFromUri('/models');
+    await faceapi.nets.faceExpressionNet.loadFromUri('/models');
+    startVideo();
+  } catch (error) {
+    console.log('error');
+  }
 };
 
 setup();
@@ -21,7 +29,6 @@ function startVideo() {
 
 video.addEventListener('playing', () => {
   const canvas = faceapi.createCanvasFromMedia(video);
-  console.log(canvas);
   document.body.append(canvas);
   const displaySize = { width: video.width, height: video.height };
   faceapi.matchDimensions(canvas, displaySize);
@@ -33,14 +40,24 @@ video.addEventListener('playing', () => {
 
     const resizedDetections = faceapi.resizeResults(detections, displaySize);
     canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
-    // faceapi.draw.drawDetections(canvas, resizedDetections);
+    faceapi.draw.drawDetections(canvas, resizedDetections);
     // faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
     faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
 
+    const target = document.getElementsByClassName('anime');
     if (detections[0]) {
-      if (detections[0].expressions.happy > 0.7) console.log('happy');
-      if (detections[0].expressions.sad > 0.7) console.log('sad');
-      if (detections[0].expressions.neutral > 0.7) console.log('neutral');
+      if (
+        detections[0].expressions.happy > 0.7 &&
+        target[0].attributes[1].value.includes('-100px')
+      ) {
+        smile.play();
+      }
+      if (
+        detections[0].expressions.sad > 0.7 &&
+        target[0].attributes[1].value.includes('-8000px')
+      ) {
+        moop.play();
+      }
     }
-  }, 100);
+  }, 200);
 });

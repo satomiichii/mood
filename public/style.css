@@ -8,18 +8,27 @@ body {
   align-items: flex-end;
   color: whitesmoke;
   font-family: 'League Script', cursive;
+}
+
+.anime {
+  margin: 0;
+  padding: 0;
+  width: 700vw;
+  height: 200vh;
+  position: absolute;
+  left: 0;
   background: linear-gradient(
     -45deg,
-    #ffddb7,
+    #ffd78d,
+    #ffc27d,
     #f1815f,
     #e73c7e,
-    #5284cf,
-    #23d5ab,
-    #befcce
+    #6fa3f1,
+    #6ce7e7,
+    #a3f5e1
   );
-  background-size: 800% 800%;
-  -webkit-animation: gradientBG 15s ease infinite;
-  animation: gradientBG 15s ease infinite;
+
+  z-index: -1;
 }
 
 canvas {
@@ -35,29 +44,7 @@ canvas {
 #app {
   position: absolute;
   font-size: 3rem;
+
   left: 45%;
   top: 48%;
-}
-
-@-webkit-keyframes gradientBG {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-@keyframes gradientBG {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
 }
