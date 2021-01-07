@@ -3,7 +3,6 @@ import * as faceapi from 'face-api.js';
 import regeneratorRuntime from 'regenerator-runtime';
 
 const video = document.getElementById('video');
-console.log(faceapi.nets);
 
 const setup = async () => {
   try {
@@ -48,13 +47,13 @@ video.addEventListener('playing', () => {
     if (detections[0]) {
       if (
         detections[0].expressions.happy > 0.7 &&
-        target[0].attributes[1].value.includes('-100px')
+        target[0].attributes[1].value.includes('0px')
       ) {
         smile.play();
       }
       if (
         detections[0].expressions.sad > 0.7 &&
-        target[0].attributes[1].value.includes('-8000px')
+        target[0].attributes[1].value.includes('-9000px')
       ) {
         moop.play();
       }

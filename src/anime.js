@@ -2,7 +2,7 @@ import anime from 'animejs/lib/anime.es.js';
 
 export const moop = anime({
   targets: '.anime',
-  translateX: [-100, -8000],
+  translateX: [0, -9000],
   duration: 3000,
   easing: 'easeInOutSine',
   direction: 'reverse',
@@ -11,7 +11,7 @@ export const moop = anime({
 
 export const smile = anime({
   targets: '.anime',
-  translateX: [-100, -8000],
+  translateX: [0, -9000],
   duration: 3000,
   easing: 'easeInOutSine',
   autoplay: false,
