@@ -7,7 +7,7 @@ body {
   justify-content: flex-end;
   align-items: flex-end;
   color: whitesmoke;
-  font-family: 'League Script', cursive;
+  font-family: 'Sacramento', cursive;
 }
 
 .anime {
@@ -42,8 +42,15 @@ canvas {
 
 #app {
   position: absolute;
-  font-size: 3rem;
-
+  font-size: 3.25rem;
   left: 45%;
   top: 48%;
+}
+
+.smile {
+  opacity: 0;
+}
+
+.frown {
+  opacity: 0;
 }
